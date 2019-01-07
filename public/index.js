@@ -165,6 +165,18 @@ setBookingPrice()
 // STEP 2 //
 
 function decreasePrice(){
-  //for(let i = 0; i < events.length; )
+  for(let i = 0; i < events.length; i++){
+    if(events[i].persons > 10 && events[i].persons <= 20){
+      events[i].price -= 10*events[i].price/100
+    }
+    if(events[i].persons > 20 && events[i].persons <= 60){
+      events[i].price -= 30*events[i].price/100
+    }
+    if(events[i].persons > 60){
+      events[i].price -= 50*events[i].price/100
+    }
+  }
 }
+
+decreasePrice()
 
