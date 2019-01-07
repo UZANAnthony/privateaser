@@ -180,3 +180,15 @@ function decreasePrice(){
 
 decreasePrice()
 
+// STEP 3 //
+
+function setCommission(){
+  for(let i = 0; i < events.length; i++){
+    events[i].commission.insurance = events[i].price * 30 / 100 / 2
+    events[i].commission.treasury = events[i].persons
+    events[i].commission.privateaser = events[i].price * 30 / 100 / 2 - events[i].persons
+  }
+}
+
+setCommission()
+
