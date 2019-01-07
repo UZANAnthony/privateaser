@@ -196,10 +196,37 @@ setCommission()
 
 function setDeducOpt(){
   for(let i = 0; i < events.length; i++){
-    events[i].options.deductibleReduction = true
-    events[i].price += events[i].persons
+    if(events[i].options.deductibleReduction){
+      events[i].price += events[i].persons
+    }
+    
   }
 }
 
 setDeducOpt()
+
+// STEP 5 //
+
+function payActors(){
+  for(let i = 0; i < actors.length; i++){
+    let event = events.find(x => x.id === actors[i].eventId)
+    actors[i].payment[0].amount = event.price
+    if(events[i].options.deductibleReduction){
+      actors[i].payment[1].amount = event.price - event.persons - event.commission.insurance - event.commission.treasury - event.commission.privateaser
+    }
+    else{
+      actors[i].payment[1].amount = event.price - event.commission.insurance - event.commission.treasury - event.commission.privateaser
+    }
+    actors[i].payment[2].amount = event.commission.insurance
+    actors[i].payment[3].amount = event.commission.treasury
+    if(events[i].options.deductibleReduction){
+      actors[i].payment[4].amount = event.commission.privateaser + event.persons
+    }
+    else{
+      actors[i].payment[4].amount = event.commission.privateaser
+    }
+  }
+}
+
+payActors()
 
