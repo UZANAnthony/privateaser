@@ -155,11 +155,16 @@ console.log(actors);
 
 function setBookingPrice(){
   for(let i = 0; i < events.length; i++){
-    let barPriceH = bars.find(x => x.id === events[i].barId).pricePerHour
-    let barPriceP = bars.find(x => x.id === events[i].barId).pricePerPerson
-    events[i].price = events[i].persons * barPriceP + events[i].time * barPriceH
+    let bar = bars.find(x => x.id === events[i].barId)
+    events[i].price = events[i].persons * bar.pricePerPerson + events[i].time * bar.pricePerHour
   }
 }
 
 setBookingPrice()
+
+// STEP 2 //
+
+function decreasePrice(){
+  //for(let i = 0; i < events.length; )
+}
 
