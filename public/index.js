@@ -192,3 +192,14 @@ function setCommission(){
 
 setCommission()
 
+// STEP 4 //
+
+function setDeducOpt(){
+  for(let i = 0; i < events.length; i++){
+    events[i].options.deductibleReduction = true
+    events[i].price += events[i].persons
+  }
+}
+
+setDeducOpt()
+
